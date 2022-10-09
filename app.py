@@ -50,5 +50,9 @@ def server_error(e):
 def resource_not_found(e):
     return render_template("404.html"), 404
 
+@app.route('/sitemap.xml')
+def site_map():
+  return render_template("sitemape.xml")
+
 if __name__=='__main__':
     app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
