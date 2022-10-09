@@ -41,6 +41,13 @@ def display_file():
             pdfwriter.write(f)
             flash(u'File Encrypted Sucessfully')
     return send_file(ent, as_attachment=True)
+@app.errorhandler(InternalServerError)
+def server_error(e):
+    return template_rendered("500.html"),500
+
+@app.errorhandler(404)
+def resource_not_found(e):
+    return render_template("404.html"), 404
 
 if __name__=='__main__':
     app.run(debug=True,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
