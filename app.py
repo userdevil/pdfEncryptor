@@ -41,7 +41,8 @@ def display_file():
             pdfwriter.write(f)
             flash(u'File Encrypted Sucessfully')
     return send_file(ent, as_attachment=True)
-@app.errorhandler(InternalServerError)
+
+@app.errorhandler(500)
 def server_error(e):
     return template_rendered("500.html"),500
 
