@@ -40,7 +40,7 @@ def display_file():
         with open(ent, 'wb') as f:
             pdfwriter.write(f)
             flash(u'File Encrypted Sucessfully')
-    return send_file("Encrypted-"+filename, as_attachment=True)
+    return send_file(ent, as_attachment=True)
 
 @app.errorhandler(500)
 def server_error(e):
